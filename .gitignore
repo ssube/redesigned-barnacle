@@ -1,0 +1,12 @@
+.coverage
+.vscode/
+dist/
+htmlcov/
+
+coverage.xml
+
+*.swp
+*.pyc
+
+*.egg-info/
+**/__pycache__/
