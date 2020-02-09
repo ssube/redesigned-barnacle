@@ -2,6 +2,15 @@ from redesigned_barnacle.compat import platform, Platform
 import time
 
 
+def scale(value, low, high):
+    if value < low:
+        return 0
+    elif value > high:
+        return 1
+
+    return (value - low) / (high - low)
+
+
 def temp_ftoc(temp_f):
     """Convert fahrenheit degrees to celsius.
     Prometheus expects SI units, but some sensors return F.

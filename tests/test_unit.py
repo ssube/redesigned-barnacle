@@ -1,4 +1,4 @@
-from redesigned_barnacle.unit import temp_ftoc
+from redesigned_barnacle.unit import scale, temp_ftoc
 from unittest import TestCase
 
 
@@ -13,3 +13,12 @@ class TempFToCTest(TestCase):
         self.assertAlmostEqual(temp_ftoc(10),  -12.22, 2)
         self.assertAlmostEqual(temp_ftoc(20),  -6.67,  2)
         self.assertAlmostEqual(temp_ftoc(32),  0,      2)
+
+
+class ScaleTest(TestCase):
+    def test_scale(self):
+        self.assertEqual(scale(0, 0, 10), 0.0)
+        self.assertEqual(scale(5, 0, 10), 0.5)
+        self.assertEqual(scale(10, 0, 10), 1.0)
+        self.assertEqual(scale(15, 0, 10), 1.0)
+
