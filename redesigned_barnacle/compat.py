@@ -1,4 +1,3 @@
-from enum import Enum
 import os
 
 
@@ -6,7 +5,7 @@ class Stub():
     pass
 
 
-class Platform(Enum):
+class Platform:
     Unknown = 0
     X86 = 1
     ESP32 = 10
