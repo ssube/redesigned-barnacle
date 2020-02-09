@@ -17,6 +17,10 @@ Miscellaneous utilities for CircuitPython & MicroPython devices.
 - i2c
   - CircuitPython-compatible I2C bus with `try_lock`/`unlock` for MicroPython
   - bus scan/device enumerate helper
+- math
+  - temperature conversion
+  - scale & clamp helper
+  - CPython-compatible `ticks_diff`/`ticks_ms`
 - mock
   - CPython-compatible mocks
 - ntp

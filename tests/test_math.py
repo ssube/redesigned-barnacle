@@ -1,4 +1,4 @@
-from redesigned_barnacle.unit import scale, temp_ftoc
+from redesigned_barnacle.math import scale, temp_ftoc
 from unittest import TestCase
 
 
