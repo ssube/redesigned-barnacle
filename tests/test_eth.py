@@ -1,5 +1,5 @@
-from jubilant_train.eth import eth_check
-from jubilant_train.mock import MockNetwork
+from redesigned_barnacle.eth import eth_check
+from redesigned_barnacle.mock import MockNetwork
 from unittest import TestCase
 
 

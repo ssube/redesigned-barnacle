@@ -1,4 +1,4 @@
-from jubilant_train.buffer import CircularBuffer
+from redesigned_barnacle.buffer import CircularBuffer
 
 
 class Sparkline():

@@ -1,4 +1,4 @@
-from jubilant_train.compat import I2C
+from redesigned_barnacle.compat import I2C
 
 
 class CircuitI2C(I2C):

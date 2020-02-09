@@ -1,5 +1,5 @@
-from jubilant_train.i2c import scan_i2c_bus
-from jubilant_train.mock import MockI2C
+from redesigned_barnacle.i2c import scan_i2c_bus
+from redesigned_barnacle.mock import MockI2C
 from unittest import TestCase
 
 

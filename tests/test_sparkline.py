@@ -1,5 +1,5 @@
-from jubilant_train.mock import MockFramebuffer
-from jubilant_train.sparkline import Sparkline
+from redesigned_barnacle.mock import MockFramebuffer
+from redesigned_barnacle.sparkline import Sparkline
 from unittest import TestCase
 
 

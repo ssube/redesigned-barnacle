@@ -1,4 +1,4 @@
-from jubilant_train.i2c import CircuitI2C
+from redesigned_barnacle.i2c import CircuitI2C
 
 
 class MockFramebuffer():

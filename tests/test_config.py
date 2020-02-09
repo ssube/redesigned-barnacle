@@ -1,4 +1,4 @@
-from jubilant_train.config import parse_file, parse_str
+from redesigned_barnacle.config import parse_file, parse_str
 from unittest import TestCase
 from unittest.mock import mock_open, patch
 

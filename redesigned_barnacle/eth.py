@@ -1,4 +1,4 @@
-from jubilant_train.compat import LAN
+from redesigned_barnacle.compat import LAN
 
 
 def eth_check(eth):
