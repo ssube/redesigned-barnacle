@@ -11,10 +11,9 @@ class Sparkline():
   def draw(self, fb, x, y):
     val = self._buffer.get(self._buffer.position() - 1)
     dist = (val / self._height) * self._width
-    print(val, dist)
 
-    fb.fill_rect(x, y, self._height, self._width)
-    fb.hline(x, y + 1, dist, 0xff)
+    fb.fill_rect(x, y, self._height, self._width, 0x00)
+    fb.hline(x, int(y + (self._height / 2)), int(dist), 0xff)
 
   def push(self, value):
     self._buffer.push(value)
