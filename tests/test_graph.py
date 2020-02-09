@@ -1,5 +1,5 @@
+from redesigned_barnacle.graph import Sparkline
 from redesigned_barnacle.mock import MockFramebuffer
-from redesigned_barnacle.sparkline import Sparkline
 from unittest import TestCase
 
 

@@ -1,6 +1,19 @@
-from redesigned_barnacle.config import parse_file, parse_str
+from redesigned_barnacle.config import convert_value, parse_file, parse_str
 from unittest import TestCase
 from unittest.mock import mock_open, patch
+
+
+class ConvertValueTest(TestCase):
+    def test_bool(self):
+        self.assertEqual(convert_value('TRUE'), True)
+        self.assertEqual(convert_value('False'), False)
+
+    def test_int(self):
+        self.assertEqual(convert_value('123'), 123)
+        self.assertEqual(convert_value('009'), 9)
+
+    def test_quote(self):
+        self.assertEqual(convert_value('"foo"'), 'foo')
 
 
 class ParseStrTest(TestCase):
@@ -11,7 +24,7 @@ class ParseStrTest(TestCase):
         ])
         self.assertDictEqual(data, {
             'bar': 'str',
-            'foo': '1',
+            'foo': 1,
         })
 
     def test_blanks(self):
@@ -20,7 +33,7 @@ class ParseStrTest(TestCase):
             'foo: 1',
         ])
         self.assertDictEqual(data, {
-            'foo': '1',
+            'foo': 1,
         })
 
     def test_comments(self):
@@ -29,7 +42,7 @@ class ParseStrTest(TestCase):
             'foo: 1',
         ])
         self.assertDictEqual(data, {
-            'foo': '1',
+            'foo': 1,
         })
 
     def test_invalid(self):
@@ -39,7 +52,7 @@ class ParseStrTest(TestCase):
             'fin',
         ])
         self.assertDictEqual(data, {
-            'bar': '3',
+            'bar': 3,
         })
 
 
@@ -51,5 +64,5 @@ class ParseFileTest(TestCase):
 
         data = parse_file('foo', open=mock)
         self.assertDictEqual(data, {
-            'foo': '1',
+            'foo': 1,
         })

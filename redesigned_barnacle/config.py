@@ -1,5 +1,40 @@
 import os
 
+BOOLEAN_TRUES = [
+    'y', 'Y',
+    'yes', 'Yes', 'YES',
+    'true', 'True', 'TRUE',
+    'on', 'On', 'ON'
+]
+
+BOOLEAN_FALSES = [
+    'n', 'N',
+    'no', 'No', 'NO',
+    'false', 'False', 'FALSE',
+    'off', 'Off', 'OFF'
+]
+
+
+def is_numeric(c):
+    return (c >= '0' and c <= '9')
+
+
+def is_int_str(s, fn):
+    return all([fn(c) for c in s])
+
+
+def convert_value(value):
+    if value in BOOLEAN_FALSES:
+        return False
+    elif value in BOOLEAN_TRUES:
+        return True
+    elif is_int_str(value, is_numeric):
+        return int(value)
+    elif value[0] == '"':
+        return value.strip('"')
+    else:
+        return value
+
 
 def load_config(path, name):
     files = os.listdir(path)
@@ -28,10 +63,11 @@ def parse_str(lines):
         if len(parts) < 2:
             continue
 
+        key = parts[0].strip()
         value = ''.join(parts[1:]).strip()
         if len(value) == 0:
             continue
 
-        data[parts[0]] = value
+        data[key] = convert_value(value)
 
     return data

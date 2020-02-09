@@ -2,10 +2,13 @@ from redesigned_barnacle.i2c import CircuitI2C
 
 
 class MockFramebuffer():
-    def fill_rect(self, x, y, w, h):
+    def fill_rect(self, x, y, w, h, c):
         pass
 
-    def hline(self, x, y, width, color):
+    def hline(self, x, y, w, c):
+        pass
+
+    def vline(self, x, y, h, c):
         pass
 
 
