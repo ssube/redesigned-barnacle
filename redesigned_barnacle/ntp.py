@@ -4,6 +4,11 @@ import socket
 import struct
 import time
 
+
+EPOCH_1970 = 2208988800
+EPOCH_2000 = EPOCH_1970 + 946681200
+
+
 def ntp_header_unpack(line):
     return (
         (line & 0xC0000000) >> 30,
@@ -15,9 +20,8 @@ def ntp_header_unpack(line):
     )
 
 
-def ntp_fetch():
+def ntp_fetch(epoch=EPOCH_2000):
     buffer = 1024
-    epoch = 2208988800
     host = 'pool.ntp.org'
     port = 123
 
@@ -48,7 +52,8 @@ def ntp_fetch():
         raise Exception('server clock is not synchronized')
 
     if ntp_header[2] != 4:
-        raise Exception('time source is not a server (type {})'.format(ntp_header[2]))
+        raise Exception(
+            'time source is not a server (type {})'.format(ntp_header[2]))
 
     rtt_second = time_diff / 2000
     return time.localtime(ntp_second + rtt_second)
