@@ -1,3 +1,5 @@
+from redesigned_barnacle.compat import ticks_diff, ticks_ms
+
 import socket
 import struct
 import time
@@ -21,15 +23,15 @@ def ntp_fetch():
 
     request_addr = socket.getaddrinfo(host, port)
     request_data = '\x1b' + 47 * '\0'
-    time_start = time.ticks_ms()
+    time_start = ticks_ms()
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.sendto(request_data, request_addr[0][4])
+    sock.sendto(request_data.encode(), request_addr[0][4])
     response_data, response_addr = sock.recvfrom(buffer)
     sock.close()
 
-    time_stop = time.ticks_ms()
-    time_diff = time.ticks_diff(time_stop, time_start)
+    time_stop = ticks_ms()
+    time_diff = ticks_diff(time_stop, time_start)
 
     ntp_packet = struct.unpack('!12I', response_data)
     ntp_header = ntp_header_unpack(ntp_packet[0])
@@ -53,4 +55,4 @@ def ntp_fetch():
 
 
 def ntp_format():
-    return '{0:4d}-{1:02d}-{2:02d}T{3:02d}:{4:02d}:{5:02d}'.format(*ntp_fetch())
+    return '{0:4d}-{1:02d}-{2:02d}T{3:02d}:{4:02d}:{5:02d}Z'.format(*ntp_fetch())
