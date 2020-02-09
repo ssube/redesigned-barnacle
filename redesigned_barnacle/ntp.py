@@ -1,4 +1,4 @@
-from redesigned_barnacle.compat import ticks_diff, ticks_ms
+from redesigned_barnacle.unit import ticks_diff, ticks_ms
 
 import socket
 import struct

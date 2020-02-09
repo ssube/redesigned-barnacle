@@ -1,6 +1,5 @@
 from enum import Enum
 import os
-import time
 
 
 class Stub():
@@ -13,20 +12,6 @@ class Platform(Enum):
     ESP32 = 10
     ATSADM21 = 20
     ATSAMD51 = 21
-
-
-def ticks_diff(a, b):
-    if platform == Platform.ESP32:
-        return time.ticks_diff(a, b)
-    else:
-        return a - b
-
-
-def ticks_ms():
-    if platform == Platform.ESP32:
-        return time.ticks_ms()
-    else:
-        return int(round(time.time() * 1000))
 
 
 def get_platform():
