@@ -1,6 +1,14 @@
 from jubilant_train.i2c import CircuitI2C
 
 
+class MockFramebuffer():
+    def fill_rect(self, x, y, w, h):
+        pass
+
+    def hline(self, x, y, width, color):
+        pass
+
+
 class MockI2C(CircuitI2C):
     def __init__(self, locked=False, devices=[]):
         self.devices = devices

@@ -1,7 +1,5 @@
-from jubilant_train.compat import I2C, platform
+from jubilant_train.compat import I2C
 
-
-print(platform, I2C)
 
 class CircuitI2C(I2C):
     """ CircuitPython-compatible I2C bus w/ locking """

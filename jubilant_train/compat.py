@@ -14,7 +14,6 @@ class Platform(Enum):
 
 def get_platform():
   uname = os.uname()
-  print(uname.machine)
 
   if uname.machine == 'ESP32 module with ESP32':
     return Platform.ESP32
