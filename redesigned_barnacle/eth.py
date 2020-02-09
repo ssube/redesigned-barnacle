@@ -2,7 +2,7 @@ from redesigned_barnacle.compat import LAN
 
 
 def eth_check(eth):
-    online = eth.connected
+    online = eth_connected(eth)
     network = eth.ifconfig()
 
     print('Online: {}'.format(online))
