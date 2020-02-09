@@ -16,6 +16,13 @@ def eth_check(eth):
     return True
 
 
+def eth_connected(eth):
+    try:
+        return eth.connected
+    except:
+        return eth.isconnected()
+
+
 def eth_start(config, mdc, mdio, phy_type, clock_mode, phy_addr, power_pin=None):
     if power_pin != None:
         power_pin.value(1)
