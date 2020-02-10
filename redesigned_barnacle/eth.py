@@ -2,15 +2,10 @@ from redesigned_barnacle.compat import LAN
 
 
 def eth_check(eth):
-    online = eth_connected(eth)
-    network = eth.ifconfig()
-
-    print('Online: {}'.format(online))
-    if not online:
+    if not eth_connected(eth):
         return False
 
-    print('Network: {}'.format(network))
-    if network[0] == '0.0.0.0':
+    if eth.ifconfig()[0] == '0.0.0.0':
         return False
 
     return True
