@@ -22,3 +22,6 @@ class ScaleTest(TestCase):
         self.assertEqual(scale(10, 0, 10), 1.0)
         self.assertEqual(scale(15, 0, 10), 1.0)
 
+    def test_clamp(self):
+        self.assertEqual(scale(-10, 0, 1), 0)
+        self.assertEqual(scale(+10, 0, 1), 1)
