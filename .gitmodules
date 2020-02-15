@@ -1,0 +1,24 @@
+[submodule "vendor/si7021"]
+	path = vendor/si7021
+	url = git@github.com:chrisbalmer/micropython-si7021.git
+[submodule "vendor/bme680"]
+	path = vendor/bme680
+	url = git@github.com:pimoroni/bme680-python.git
+[submodule "vendor/bme280"]
+	path = vendor/bme280
+	url = git@github.com:robert-hh/BME280
+[submodule "vendor/usmbus"]
+	path = vendor/usmbus
+	url = git@github.com:gkluoe/micropython-smbus.git
+[submodule "vendor/prometheus_express"]
+	path = vendor/prometheus_express
+	url = git@github.com:ssube/prometheus_express.git
+[submodule "vendor/micropython"]
+	path = vendor/micropython
+	url = git@github.com:micropython/micropython
+[submodule "vendor/seesaw"]
+	path = vendor/seesaw
+	url = https://github.com/adafruit/Adafruit_CircuitPython_seesaw.git
+[submodule "vendor/bus-device"]
+	path = vendor/bus-device
+	url = https://github.com/adafruit/Adafruit_CircuitPython_BusDevice.git
