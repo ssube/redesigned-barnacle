@@ -113,6 +113,7 @@ def chain_main(config):
         # sample sensors
         bme_reading = bme.read_compensated_data()
         esp_reading = esp32.raw_temperature()
+        stemma_reading = 0
         location = config['label_location']
 
         metric_humidity.labels(location, 'bme280').set(bme_reading[2])
