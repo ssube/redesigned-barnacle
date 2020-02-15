@@ -33,27 +33,33 @@ Express.
 ## Provisioning Device
 
 1. configure:
-    1. customize `./config/000-template.yml`
-    2. `cp ./config/ip-room.yml /media/${USER}/card-id/config.yml`
-    3. TODO: copy boot and lib to card
-    4. install SD card in board
+    1. copy and customize `./config/000-template.yml` for this room
+       1. `label_location`
+       2. `net_ip`
+    2. `cp ./config/${IP}-${ROOM}.yml /media/${USER}/${CARD}/config.yml`
+    3. `rsync -avhL ./card/app /media/${USER}/${CARD}/app`
+    4. `rsync -avhL ./card/lib /media/${USER}/${CARD}/lib`
 2. connect:
-    1. ethernet
+    1. SD card in board
+    2. ethernet to board
         - ensure device **DOES NOT** power on (no PoE)
-    2. attach test sensor module to board
-    3. USB
-    4. TODO: copy chain loader to board
-    5. reboot and test
+    3. sensor module to board
+    4. USB power to board
+    5. `ampy -p /dev/ttyUSB0 -b 115200 put ./card/boot.py /boot.py`
+    6. reboot and test
 3. assemble:
     1. board in case
-    2. sensor ribbon cable
-    3. case cover
-    4. sensor module
-4. deploy
+    2. sensor ribbon cable to board
+    3. board case cover
+    4. sensor module cover
+4. deploy somewhere
+    1. ensure power and LAN lights are on
+    1. ensure `http://x.y.z.${IP}:8080/metrics` is active
+    1. debug over USB port
 
 ## Metrics
 
-Metrics are published at a Prometheus-compatible endpoint: `http://device:8080/metrics`
+Metrics are published at a Prometheus endpoint: `http://device:8080/metrics`
 
 ### Metric Names
 
@@ -75,7 +81,7 @@ Metrics are published at a Prometheus-compatible endpoint: `http://device:8080/m
 - Olimex:
   - ESP32-POE: https://www.olimex.com/Products/IoT/ESP32/ESP32-POE/open-source-hardware
 - Adafruit Feather
-  - M4 Express
+  - M4 Express: https://www.adafruit.com/product/3857
   - **TODO:** M0 Express
 
 ### Supported Sensors
@@ -94,6 +100,8 @@ Metrics are published at a Prometheus-compatible endpoint: `http://device:8080/m
 ## Case
 
 ### ESP32-POE Case
+
+![CAD render of ESP32 case components](./docs/case-render.png)
 
 - Onshape: https://cad.onshape.com/documents/d76ca4bd744f4af4d9935e57/w/6fa2ca68aaf1e703b4e8927f/e/7e2e7f1d76f01bc50541d834
 
