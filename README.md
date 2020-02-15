@@ -1,5 +1,11 @@
 # Redesigned Barnacle
 
+Prometheus environment sensor with printed case, optional display
+with graph, and related utilities.
+
+Cross-platform for MicroPython on ESP32-POE and CircuitPython on M4
+Express.
+
 ## Contents
 
 - [Redesigned Barnacle](#redesigned-barnacle)
