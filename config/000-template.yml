@@ -1,0 +1,23 @@
+# this is a template config file
+# limited YAML syntax is supported
+
+display_active: True
+display_height: 32
+display_width: 128
+
+image_name: esp32_poe
+
+label_location: sensor-location
+
+# omit net_ip to use DHCP setup
+net_ip: x.y.z.w
+net_mask: 255.255.255.0
+net_gw: x.y.z.1
+net_dns: x.y.z.1
+
+sensor_interval: 5000
+
+server_port: 8080
+
+stemma_active: True
+stemma_address: 54
