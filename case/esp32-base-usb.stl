@@ -16955,70 +16955,70 @@ solid Onshape
   endfacet
   facet normal 0 0 1
     outer loop
-      vertex -6 6.35 6
-      vertex 0 6.35 6
-      vertex -6 17.75 6
+      vertex -6 6.35 3
+      vertex 0 6.35 3
+      vertex -6 17.75 3
     endloop
   endfacet
   facet normal 0 0 1
     outer loop
-      vertex 0 6.35 6
-      vertex -2.60209e-15 17.75 6
-      vertex -6 17.75 6
+      vertex 0 6.35 3
+      vertex -2.60209e-15 17.75 3
+      vertex -6 17.75 3
     endloop
   endfacet
   facet normal 1 2.28253e-16 0
     outer loop
-      vertex -2.60209e-15 17.75 6
-      vertex 0 6.35 6
+      vertex -2.60209e-15 17.75 3
+      vertex 0 6.35 3
       vertex -2.60209e-15 17.75 0
     endloop
   endfacet
   facet normal 1 2.28253e-16 0
     outer loop
-      vertex 0 6.35 6
+      vertex 0 6.35 3
       vertex 0 6.35 0
       vertex -2.60209e-15 17.75 0
     endloop
   endfacet
   facet normal 0 -1 0
     outer loop
-      vertex 0 6.35 6
-      vertex -6 6.35 6
+      vertex 0 6.35 3
+      vertex -6 6.35 3
       vertex 0 6.35 0
     endloop
   endfacet
   facet normal 0 -1 0
     outer loop
-      vertex -6 6.35 6
+      vertex -6 6.35 3
       vertex -6 6.35 0
       vertex 0 6.35 0
     endloop
   endfacet
   facet normal 0 1 0
     outer loop
-      vertex -6 17.75 6
-      vertex -2.60209e-15 17.75 6
+      vertex -6 17.75 3
+      vertex -2.60209e-15 17.75 3
       vertex -6 17.75 0
     endloop
   endfacet
   facet normal 0 1 0
     outer loop
-      vertex -2.60209e-15 17.75 6
+      vertex -2.60209e-15 17.75 3
       vertex -2.60209e-15 17.75 0
       vertex -6 17.75 0
     endloop
   endfacet
   facet normal -1 0 0
     outer loop
-      vertex -6 6.35 6
-      vertex -6 17.75 6
+      vertex -6 6.35 3
+      vertex -6 17.75 3
       vertex -6 6.35 0
     endloop
   endfacet
   facet normal -1 0 0
     outer loop
-      vertex -6 17.75 6
+      vertex -6 17.75 3
       vertex -6 17.75 0
       vertex -6 6.35 0
     endloop
