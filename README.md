@@ -11,26 +11,28 @@ Express.
 - [Redesigned Barnacle](#redesigned-barnacle)
   - [Contents](#contents)
   - [TODO](#todo)
-  - [Provisioning Device](#provisioning-device)
+  - [Device Setup](#device-setup)
   - [Metrics](#metrics)
     - [Metric Names](#metric-names)
-  - [Supported Hardware](#supported-hardware)
+  - [Hardware](#hardware)
     - [Supported Boards](#supported-boards)
     - [Supported Sensors](#supported-sensors)
-  - [Case](#case)
     - [ESP32-POE Case](#esp32-poe-case)
   - [Utilities](#utilities)
 
 ## TODO
 
-- case:
-  - waterproof shell
+- hardware:
+  - esp32-poe case:
+    - waterproof shell
+  - m4 express case
 - metrics:
   - power:
     - battery level
     - solar source
+- ota update
 
-## Provisioning Device
+## Device Setup
 
 1. configure:
     1. copy and customize `./config/000-template.yml` for this room
@@ -74,7 +76,7 @@ Metrics are published at a Prometheus endpoint: `http://device:8080/metrics`
     - `prometheus_express_system_memory_alloc`: allocated (used) memory
     - `prometheus_express_system_memory_free`: free memory
 
-## Supported Hardware
+## Hardware
 
 ### Supported Boards
 
@@ -97,8 +99,6 @@ Metrics are published at a Prometheus endpoint: `http://device:8080/metrics`
   - Makerfocus 128x32 blue (2x, $11): https://www.amazon.com/gp/product/B0761LV1SD
   - Geekcreit 128x64 blue w/ yellow header (1x, $6): https://www.banggood.com/0_96-Inch-4Pin-Blue-Yellow-IIC-I2C-OLED-Display-Module-p-969144.html
 
-## Case
-
 ### ESP32-POE Case
 
 ![CAD render of ESP32 case components](./docs/case-render.png)
@@ -108,11 +108,12 @@ Metrics are published at a Prometheus endpoint: `http://device:8080/metrics`
 Parts:
 
 - base:
-  - POE & USB
+  - USB & RJ45 gap
+  - RJ45 gap only
 - mid:
   - M3 mount
   - rack mount
-  - POE only
+  - flat wall (normal)
 - lid:
   - M3 mount (x3)
   - full (closed)
@@ -139,8 +140,10 @@ Parts:
   - temperature conversion
   - scale & clamp helper
   - CPython-compatible `ticks_diff`/`ticks_ms`
-- mock
-  - CPython-compatible mocks
+- mock (CPython-compatible)
+  - framebuffer
+  - I2C bus
+  - network
 - ntp
   - NTP client
   - ISO-8601 date format
