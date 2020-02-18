@@ -14,6 +14,7 @@ Express.
   - [Device Setup](#device-setup)
   - [Metrics](#metrics)
     - [Metric Names](#metric-names)
+    - [Metric Labels](#metric-labels)
   - [Hardware](#hardware)
     - [Supported Boards](#supported-boards)
     - [Supported Sensors](#supported-sensors)
@@ -31,6 +32,8 @@ Express.
     - battery level
     - solar source
 - ota update
+  - endpoint authentication
+  - app & config update (probably not libs)
 
 ## Device Setup
 
@@ -39,15 +42,15 @@ Express.
        1. `label_location`
        2. `net_ip`
     2. `cp ./config/${IP}-${ROOM}.yml /media/${USER}/${CARD}/config.yml`
-    3. `rsync -avhL ./card/app /media/${USER}/${CARD}/app`
-    4. `rsync -avhL ./card/lib /media/${USER}/${CARD}/lib`
+    3. `rsync -avhL ./image/app /media/${USER}/${CARD}/app`
+    4. `rsync -avhL ./image/lib /media/${USER}/${CARD}/lib`
 2. connect:
     1. SD card in board
     2. ethernet to board
         - ensure device **DOES NOT** power on (no PoE)
     3. sensor module to board
     4. USB power to board
-    5. `ampy -p /dev/ttyUSB0 -b 115200 put ./card/boot.py /boot.py`
+    5. `ampy -p /dev/ttyUSB0 -b 115200 put ./image/boot.py /boot.py`
     6. reboot and test
 3. assemble:
     1. board in case
@@ -61,7 +64,37 @@ Express.
 
 ## Metrics
 
-Metrics are published at a Prometheus endpoint: `http://device:8080/metrics`
+Metrics are published at a Prometheus endpoint, typically `http://device:8080/metrics`.
+
+Some help text is included with each metric, and multiple reading may be present with
+different labels. For example:
+
+```none
+# HELP prometheus_express_system_cpu_frequency system CPU frequency
+# TYPE prometheus_express_system_cpu_frequency gauge
+prometheus_express_system_cpu_frequency 160000000
+# HELP prometheus_express_system_memory_alloc allocated system memory
+# TYPE prometheus_express_system_memory_alloc gauge
+prometheus_express_system_memory_alloc 118992
+# HELP prometheus_express_system_heartbeat system heartbeat counter
+# TYPE prometheus_express_system_heartbeat counter
+prometheus_express_system_heartbeat 6567
+# HELP prometheus_express_system_memory_free free system memory
+# TYPE prometheus_express_system_memory_free gauge
+prometheus_express_system_memory_free 38576
+# HELP prometheus_express_sensor_humidity humidity data from the sensors
+# TYPE prometheus_express_sensor_humidity gauge
+prometheus_express_sensor_humidity{location="None",sensor="None"} 0
+prometheus_express_sensor_humidity{location="sensor-location",sensor="bme280"} 20.75245
+# HELP prometheus_express_sensor_moisture moisture data from the sensors
+# TYPE prometheus_express_sensor_moisture gauge
+prometheus_express_sensor_moisture{location="None",sensor="None"} 0
+# HELP prometheus_express_sensor_temperature temperature data from the sensors
+# TYPE prometheus_express_sensor_temperature gauge
+prometheus_express_sensor_temperature{location="None",sensor="None"} 0
+prometheus_express_sensor_temperature{location="sensor-location",sensor="esp32"} 50.0
+prometheus_express_sensor_temperature{location="sensor-location",sensor="bme280"} 17.93268
+```
 
 ### Metric Names
 
@@ -75,6 +108,11 @@ Metrics are published at a Prometheus endpoint: `http://device:8080/metrics`
     - `prometheus_express_system_heartbeat`: system heartbeat
     - `prometheus_express_system_memory_alloc`: allocated (used) memory
     - `prometheus_express_system_memory_free`: free memory
+
+### Metric Labels
+
+- `location`: present on most `_sensor` metrics, identifies the location of the sensor module, from `config['label_location']`
+- `sensor`: present on most `_sensor` metrics, identifies the hardware source within the sensor module
 
 ## Hardware
 
