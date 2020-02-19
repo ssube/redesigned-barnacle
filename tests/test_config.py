@@ -6,11 +6,24 @@ from unittest.mock import mock_open, patch
 class ConvertValueTest(TestCase):
     def test_bool(self):
         self.assertEqual(convert_value('TRUE'), True)
+        self.assertTrue(type(convert_value('TRUE')) is bool, True)
+
         self.assertEqual(convert_value('False'), False)
+        self.assertTrue(type(convert_value('False')) is bool, True)
+
+    def test_float(self):
+        self.assertEqual(convert_value('1.23'), 1.23)
+        self.assertTrue(type(convert_value('1.23')) is float)
+
+        self.assertEqual(convert_value('.456'), 0.456)
+        self.assertTrue(type(convert_value('.456')) is float)
 
     def test_int(self):
         self.assertEqual(convert_value('123'), 123)
+        self.assertTrue(type(convert_value('123')) is int)
+
         self.assertEqual(convert_value('009'), 9)
+        self.assertTrue(type(convert_value('009')) is int)
 
     def test_quote(self):
         self.assertEqual(convert_value('"foo"'), 'foo')

@@ -19,7 +19,19 @@ def is_numeric(c):
     return (c >= '0' and c <= '9')
 
 
-def is_int_str(s, fn):
+def is_decimal(c):
+    return c == '.' or is_numeric(c)
+
+
+def is_float(s):
+    return s.count('.') <= 1 and str_all(s, is_decimal)
+
+
+def is_integer(s):
+    return str_all(s, is_numeric)
+
+
+def str_all(s, fn):
     return all([fn(c) for c in s])
 
 
@@ -28,8 +40,10 @@ def convert_value(value):
         return False
     elif value in BOOLEAN_TRUES:
         return True
-    elif is_int_str(value, is_numeric):
+    elif is_integer(value):
         return int(value)
+    elif is_float(value):
+        return float(value)
     elif value[0] == '"':
         return value.strip('"')
     else:

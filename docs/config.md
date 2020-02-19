@@ -90,12 +90,13 @@ The config file uses a `.yml` extension and limited YAML syntax, implemented in 
 - `key: value` pairs
 - `# comments` and empty lines
 - boolean values
+- float values
 - integer values
 - string values (quoted or unquoted)
 
 ### Syntax TODO
 
 - dicts
-- float values
 - lists
 - multiline strings
+- signed numbers
