@@ -18,6 +18,10 @@ class ConvertValueTest(TestCase):
         self.assertEqual(convert_value('.456'), 0.456)
         self.assertTrue(type(convert_value('.456')) is float)
 
+    def test_ip(self):
+        """float should not convert IP addresses - single dot"""
+        self.assertFalse(type(convert_value('1.1.1.1')) is float)
+
     def test_int(self):
         self.assertEqual(convert_value('123'), 123)
         self.assertTrue(type(convert_value('123')) is int)
@@ -27,6 +31,7 @@ class ConvertValueTest(TestCase):
 
     def test_quote(self):
         self.assertEqual(convert_value('"foo"'), 'foo')
+        self.assertTrue(type(convert_value('"10.2"')) is str)
 
 
 class ParseStrTest(TestCase):
