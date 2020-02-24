@@ -4,6 +4,9 @@ from unittest.mock import mock_open, patch
 
 
 class ConvertValueTest(TestCase):
+    def test_null(self):
+        self.assertEqual(convert_value('~'), None)
+
     def test_bool(self):
         self.assertEqual(convert_value('TRUE'), True)
         self.assertTrue(type(convert_value('TRUE')) is bool, True)

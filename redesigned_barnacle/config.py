@@ -36,6 +36,8 @@ def str_all(s, fn):
 
 
 def convert_value(value):
+    if value == '~':
+        return None
     if value in BOOLEAN_FALSES:
         return False
     elif value in BOOLEAN_TRUES:
