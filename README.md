@@ -24,7 +24,7 @@ Express.
 ## TODO
 
 - hardware:
-  - esp32-poe case:
+  - esp32-poe case
     - waterproof shell
   - m4 express case
 - metrics:

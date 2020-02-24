@@ -48,6 +48,12 @@ and place it on root of the SD card.
 
 ### Net Keys
 
+- `net_dns`
+  - string
+  - IP address of the network's DNS server
+- `net_gw`
+  - string
+  - IP address of the network's gateway
 - `net_ip`
   - string
   - static IP for this device
@@ -55,12 +61,6 @@ and place it on root of the SD card.
 - `net_mask`
   - string
   - IP mash for the network subnet
-- `net_gw`
-  - string
-  - IP address of the network's gateway
-- `net_dns`
-  - string
-  - IP address of the network's DNS server
 
 ### Sensor Keys
 
